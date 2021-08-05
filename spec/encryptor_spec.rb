@@ -17,7 +17,7 @@ RSpec.describe Encryptor do
       expect(encrypt.message).to eq(message)
       expect(encrypt.key).to eq(key)
       expect(encrypt.date).to eq(date)
-      expect(encrypt.offsets).to eq({a: 3, b: 27, c: 73, d: 20})
+      expect(encrypt.offsets).to eq([3, 27, 73, 20])
     end
   end
 
@@ -38,6 +38,19 @@ RSpec.describe Encryptor do
       allow(encrypt).to receive(:generate_number).and_return(256)
 
       expect(encrypt.make_key_string).to eq("00256")
+    end
+  end
+
+  context 'decrypting' do
+    encrypt = Encryptor.new("Hello World", '02715')
+
+    it 'can decrypt a message' do
+      expected = {
+        encryption: "keder ohulw",
+        key: "02715",
+        date: "040895"
+      }
+      expect(encrypt.encrypt).to eq(expected)
     end
   end
 end

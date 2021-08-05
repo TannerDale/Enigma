@@ -24,8 +24,8 @@ class Offset
   def make_offsets
     modifiers = date_modifiers
     format_keys(@key).each.map do |key_let, key|
-      [key_let, key + modifiers[key_let]]
-    end.to_h
+      key + modifiers[key_let]
+    end
   end
 
   def self.offsets(key, date)
