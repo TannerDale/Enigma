@@ -1,6 +1,7 @@
 require './lib/key_maker'
 require './lib/offset'
 require './lib/encryptor'
+require './lib/cypher'
 
 RSpec.describe Encryptor do
   context 'initialize' do
@@ -49,25 +50,25 @@ RSpec.describe Encryptor do
     it 'can encrypt basic message' do
       encrypt = Encryptor.new('hello world', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq('keder ohulw')
+      expect(encrypt.process_message).to eq('keder ohulw')
     end
 
     it 'can encrypt message with capitol letters' do
       encrypt = Encryptor.new('Hello World', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq('keder ohulw')
+      expect(encrypt.process_message).to eq('keder ohulw')
     end
 
     it 'can encrypt mesage with puntuation' do
       encrypt = Encryptor.new('Hello World!', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq('keder ohulw!')
+      expect(encrypt.process_message).to eq('keder ohulw!')
     end
 
     it 'can encrypt a different message' do
       encrypt = Encryptor.new('hello world end', '08304', '291018')
 
-      expect(encrypt.encrypted_message).to eq('vjqtbeaweqihssi')
+      expect(encrypt.process_message).to eq('vjqtbeaweqihssi')
     end
 
     it 'can format a encrypted message' do
