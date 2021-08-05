@@ -40,6 +40,12 @@ RSpec.describe Encryptor do
   end
 
   context 'encrypting' do
+    it 'can get the next letter index and letter' do
+      encrypt = Encryptor.new("hello world", '02715', '040895')
+      expect(encrypt.next_index('b', 3)).to eq(4)
+      expect(encrypt.next_letter('b', 0)).to eq('e')
+    end
+
     it 'can encrypt basic message' do
       encrypt = Encryptor.new("hello world", '02715', '040895')
 
