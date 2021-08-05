@@ -17,6 +17,7 @@ RSpec.describe Encryptor do
       expect(encrypt.message).to eq(message)
       expect(encrypt.key).to eq(key)
       expect(encrypt.date).to eq(date)
+      expect(encrypt.offsets).to eq({a: 3, b: 27, c: 73, d: 20})
     end
   end
 
