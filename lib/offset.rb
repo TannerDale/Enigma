@@ -1,4 +1,3 @@
-require 'time'
 require './lib/key_maker'
 
 class Offset
