@@ -22,10 +22,10 @@ RSpec.describe Encryptor do
   end
 
   context 'date formatting and key generating' do
-    encrypt = Encryptor.new("Hello World", '02715', "050821")
+    encrypt = Encryptor.new('Hello World', '02715', '050821')
 
     it 'can format a date' do
-      expect(Encryptor.format_today(Time.new(2021, 8, 5))).to eq("050821")
+      expect(Encryptor.format_today(Time.new(2021, 8, 5))).to eq('050821')
     end
 
     it 'can generate a number' do
@@ -35,47 +35,47 @@ RSpec.describe Encryptor do
     it 'can make a new key' do
       allow(encrypt).to receive(:generate_number).and_return(256)
 
-      expect(encrypt.make_key_string).to eq("00256")
+      expect(encrypt.make_key_string).to eq('00256')
     end
   end
 
   context 'encrypting' do
     it 'can get the next letter index and letter' do
-      encrypt = Encryptor.new("hello world", '02715', '040895')
+      encrypt = Encryptor.new('hello world', '02715', '040895')
       expect(encrypt.next_index('b', 3)).to eq(4)
       expect(encrypt.next_letter('b', 0)).to eq('e')
     end
 
     it 'can encrypt basic message' do
-      encrypt = Encryptor.new("hello world", '02715', '040895')
+      encrypt = Encryptor.new('hello world', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq("keder ohulw")
+      expect(encrypt.encrypted_message).to eq('keder ohulw')
     end
 
     it 'can encrypt message with capitol letters' do
-      encrypt = Encryptor.new("Hello World", '02715', '040895')
+      encrypt = Encryptor.new('Hello World', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq("keder ohulw")
+      expect(encrypt.encrypted_message).to eq('keder ohulw')
     end
 
     it 'can encrypt mesage with puntuation' do
-      encrypt = Encryptor.new("Hello World!", '02715', '040895')
+      encrypt = Encryptor.new('Hello World!', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq("keder ohulw!")
+      expect(encrypt.encrypted_message).to eq('keder ohulw!')
     end
 
     it 'can encrypt a different message' do
-      encrypt = Encryptor.new("hello world end", "08304", "291018")
+      encrypt = Encryptor.new('hello world end', '08304', '291018')
 
-      expect(encrypt.encrypted_message).to eq("vjqtbeaweqihssi")
+      expect(encrypt.encrypted_message).to eq('vjqtbeaweqihssi')
     end
 
     it 'can format a encrypted message' do
-      encrypt = Encryptor.new("hello world", '02715', '040895')
+      encrypt = Encryptor.new('hello world', '02715', '040895')
       expected = {
-        encryption: "keder ohulw",
-        key: "02715",
-        date: "040895"
+        encryption: 'keder ohulw',
+        key: '02715',
+        date: '040895'
       }
       expect(encrypt.format_encryption).to eq(expected)
     end
@@ -83,11 +83,11 @@ RSpec.describe Encryptor do
 
   it 'can encrypt a message' do
     expected = {
-      encryption: "vjqtbeaweqihssi!",
-      key: "08304",
-      date: "291018"
+      encryption: 'vjqtbeaweqihssi!',
+      key: '08304',
+      date: '291018'
     }
 
-    expect(Encryptor.encrypt("hello WORLD end!", "08304", "291018")).to eq(expected)
+    expect(Encryptor.encrypt('hello WORLD end!', '08304', '291018')).to eq(expected)
   end
 end

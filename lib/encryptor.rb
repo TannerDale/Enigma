@@ -41,7 +41,7 @@ class Encryptor
   end
 
   def self.format_today(date=Time.now)
-    date.strftime("%d%m") + date.strftime("%Y")[2..]
+    date.strftime('%d%m') + date.strftime('%Y')[2..]
   end
 
   def self.encrypt(message, key=make_key_string, date=format_today)
