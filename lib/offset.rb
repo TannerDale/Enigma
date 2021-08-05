@@ -11,14 +11,14 @@ class Offset
   end
 
   def date_modifiers
-    letter_keys = [:a, :b, :c, :d]
+    letter_keys = %i[a b c d]
     date_modifiers_array.each_with_index.map do |num, i|
       [letter_keys[i], num]
     end.to_h
   end
 
   def date_modifiers_array
-    (@date.to_i ** 2).digits.reverse[-4..-1]
+    (@date.to_i**2).digits.reverse[-4..-1]
   end
 
   def make_offsets

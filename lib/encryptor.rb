@@ -17,14 +17,18 @@ class Encryptor
   def encrypted_message
     @message.chars.each_with_index.map do |letter, i|
       if ALPHABET.include?(letter)
-        ALPHABET[next_letter(letter, @offsets[i % 4])]
+        next_letter(letter, i)
       else
         letter
       end
     end.join
   end
 
-  def next_letter(letter, shift)
+  def next_letter(letter, i)
+    ALPHABET[next_index(letter, @offsets[i % 4])]
+  end
+
+  def next_index(letter, shift)
     (ALPHABET.index(letter) + shift) % ALPHABET.size
   end
 
@@ -37,7 +41,7 @@ class Encryptor
   end
 
   def self.format_today(date=Time.now)
-    date.strftime("%d%m") + date.strftime("%Y")[2..]
+    date.strftime('%d%m') + date.strftime('%Y')[2..]
   end
 
   def self.encrypt(message, key=make_key_string, date=format_today)
