@@ -5,13 +5,9 @@ class Offset
 
   attr_reader :key, :date
 
-  def initialize(key=make_key_string, date=format_today(Time.now))
+  def initialize(key, date)
     @key = key
     @date = date
-  end
-
-  def format_today(date)
-    date.strftime("%d%m") + date.strftime("%Y")[2..]
   end
 
   def date_modifiers
@@ -28,8 +24,8 @@ class Offset
   def make_offsets
     modifiers = date_modifiers
     format_keys(@key).each.map do |key_let, key|
-      [key_let, key + modifiers[key_let]]
-    end.to_h
+      key + modifiers[key_let]
+    end
   end
 
   def self.offsets(key, date)
