@@ -39,7 +39,7 @@ RSpec.describe Encryptor do
     end
   end
 
-  context 'decrypting' do
+  context 'encrypting' do
     it 'can encrypt basic message' do
       encrypt = Encryptor.new("hello world", '02715', '040895')
 
