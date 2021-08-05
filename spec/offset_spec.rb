@@ -14,7 +14,7 @@ RSpec.describe Offset do
   end
 
   context 'key maker module' do
-    offset = Offset.new("02715")
+    offset = Offset.new("02715", "040895")
 
     it 'can generate a number' do
       expect(offset.generate_number).to be_between(0, 99999)
