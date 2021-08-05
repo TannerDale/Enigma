@@ -1,7 +1,4 @@
 require './lib/offset'
-require './lib/key_maker'
-
-
 RSpec.describe Offset do
   context 'initialize' do
     offset = Offset.new("02715", "040895")
@@ -13,12 +10,6 @@ RSpec.describe Offset do
     it 'has attributes' do
       expect(offset.key).to eq("02715")
       expect(offset.date).to eq("040895")
-    end
-
-    it 'can format today' do
-      date = Date.new(2021, 8, 5)
-
-      expect(offset.format_today(date)).to eq("050821")
     end
   end
 
