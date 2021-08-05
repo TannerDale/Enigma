@@ -14,11 +14,6 @@ class Encryptor
     @offsets = Offset.offsets(@key, @date)
   end
 
-  def format_today
-    date = Time.now
-    date.strftime("%d%m") + date.strftime("%Y")[2..]
-  end
-
   def encrypted_message
     @message.chars.each_with_index.map do |letter, i|
       if ALPHABET.include?(letter)
@@ -41,8 +36,7 @@ class Encryptor
     }
   end
 
-  def self.format_today
-    date = Time.now
+  def self.format_today(date=Time.now)
     date.strftime("%d%m") + date.strftime("%Y")[2..]
   end
 

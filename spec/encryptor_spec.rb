@@ -25,9 +25,7 @@ RSpec.describe Encryptor do
     encrypt = Encryptor.new("Hello World", '02715', "050821")
 
     it 'can format a date' do
-      allow(encrypt).to receive(:format_today).and_return("050821")
-
-      expect(encrypt.date).to eq("050821")
+      expect(Encryptor.format_today(Time.new(2021, 8, 5))).to eq("050821")
     end
 
     it 'can generate a number' do
