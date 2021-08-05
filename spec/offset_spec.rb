@@ -16,16 +16,6 @@ RSpec.describe Offset do
   context 'key maker module' do
     offset = Offset.new("02715", "040895")
 
-    it 'can generate a number' do
-      expect(offset.generate_number).to be_between(0, 99999)
-    end
-
-    it 'can make a new key' do
-      allow(offset).to receive(:generate_number).and_return(256)
-
-      expect(offset.make_key_string).to eq("00256")
-    end
-
     it 'can seperate keys' do
       expect(offset.seperated_keys("02715")).to eq(%w(02 27 71 15))
     end

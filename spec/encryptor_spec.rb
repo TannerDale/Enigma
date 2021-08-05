@@ -20,13 +20,23 @@ RSpec.describe Encryptor do
     end
   end
 
-  context 'date formatting' do
+  context 'date formatting and key generating' do
     encrypt = Encryptor.new("Hello World", '02715')
 
     it 'can format a date' do
       allow(encrypt).to receive(:format_today).and_return("050821")
 
       expect(encrypt.date).to eq("050821")
+    end
+
+    it 'can generate a number' do
+      expect(encrypt.generate_number).to be_between(0, 99999)
+    end
+
+    it 'can make a new key' do
+      allow(encrypt).to receive(:generate_number).and_return(256)
+
+      expect(encrypt.make_key_string).to eq("00256")
     end
   end
 end
