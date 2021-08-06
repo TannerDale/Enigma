@@ -1,6 +1,10 @@
 require './lib/cypher'
 
-class Encryptor < Cypher
+ARGV = ['message.txt', 'encrytped.txt']
+ARGV[0] = 'message.txt'
+ARGV[1] = 'encrytped.txt'
+
+class RunEncryption < Cypher
   def initialize(message, key, date)
     super
   end
@@ -18,6 +22,10 @@ class Encryptor < Cypher
   end
 
   def self.encrypt(message, key, date)
-    Encryptor.new(message, key, date).format_encryption
+    RunEncryption.new(message, key, date).format_encryption
+  end
+
+  def self.process_files
+
   end
 end

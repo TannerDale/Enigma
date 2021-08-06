@@ -1,6 +1,6 @@
 require './lib/cypher'
 
-class Decryptor < Cypher
+class RunDecryption < Cypher
   def initialize(message, key, date)
     super
   end
@@ -18,6 +18,6 @@ class Decryptor < Cypher
   end
 
   def self.decrypt(message, key, date)
-    Decryptor.new(message, key, date).format_decryption
+    RunDecryption.new(message, key, date).format_decryption
   end
 end

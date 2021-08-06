@@ -1,5 +1,5 @@
-require './lib/encryptor'
-require './lib/decryptor'
+require './lib/run_encryption'
+require './lib/run_decryption'
 require './lib/key_maker'
 
 class Enigma
@@ -13,10 +13,10 @@ class Enigma
   end
 
   def encrypt(message, key=make_key_string, date=format_today)
-    Encryptor.encrypt(message, key, date)
+    RunEncryption.encrypt(message, key, date)
   end
 
   def decrypt(message, key=make_key_string, date=format_today)
-    Decryptor.decrypt(message, key, date)
+    RunDecryption.decrypt(message, key, date)
   end
 end

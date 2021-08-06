@@ -1,6 +1,4 @@
 require './lib/enigma'
-require './lib/decryptor'
-require './lib/encryptor'
 
 RSpec.describe Enigma do
   context 'date formatting and key generating' do
