@@ -1,8 +1,7 @@
-require './lib/key_maker'
+
 require './lib/offset'
 
 class Cypher
-  include KeyMaker
 
   attr_reader :message, :key, :date, :offsets
 
@@ -27,9 +26,5 @@ class Cypher
 
   def next_letter(letter, i)
     ALPHABET[next_index(letter, @offsets[i % 4])]
-  end
-
-  def self.format_today(date=Time.now)
-    date.strftime('%d%m') + date.strftime('%Y')[2..]
   end
 end

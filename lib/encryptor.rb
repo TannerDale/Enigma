@@ -17,7 +17,7 @@ class Encryptor < Cypher
     }
   end
 
-  def self.encrypt(message, key=make_key_string, date=format_today)
+  def self.encrypt(message, key, date)
     Encryptor.new(message, key, date).format_encryption
   end
 end

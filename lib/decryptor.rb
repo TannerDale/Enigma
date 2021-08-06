@@ -17,7 +17,7 @@ class Decryptor < Cypher
     }
   end
 
-  def self.decrypt(message, key=make_key_string, date=format_today)
+  def self.decrypt(message, key, date)
     Decryptor.new(message, key, date).format_decryption
   end
 end
