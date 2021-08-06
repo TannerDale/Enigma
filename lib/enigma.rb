@@ -16,7 +16,8 @@ class Enigma
     RunEncryption.encrypt(message, key, date)
   end
 
-  def decrypt(message, key=make_key_string, date=format_today)
+  def decrypt(message, key=make_key_string, date=nil)
+    date ||= format_today
     RunDecryption.decrypt(message, key, date)
   end
 end

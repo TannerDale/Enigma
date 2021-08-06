@@ -7,10 +7,9 @@ ARGV[1] == 'decrypted.txt'
 ARGV[2] == 'key'
 ARGV[3] == 'date'
 
-class Encryptor < FileWorker
+class Decryptor < FileWorker
   def initialize
-    super(ARGV[0], ARGV[1])
-    @method = :decryption
+    super(ARGV[0], ARGV[1], :decryption)
     @result = decrypted
   end
 
@@ -19,4 +18,4 @@ class Encryptor < FileWorker
   end
 end
 
-puts Encryptor.new.output
+puts Decryptor.new.output

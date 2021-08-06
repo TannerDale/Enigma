@@ -12,8 +12,8 @@ module KeyMaker
     end
   end
 
-  def make_key_string
-    generate_number.to_s.rjust(5, '0')
+  def make_key_string(number=generate_number)
+    number.to_s.rjust(5, '0')
   end
 
   def generate_number

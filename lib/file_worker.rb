@@ -1,8 +1,8 @@
-
 class FileWorker
-  def initialize(read_file, write_file)
+  def initialize(read_file, write_file, method)
     @read_file = read_file
     @write_file = write_file
+    @method = method
   end
 
   def read_file(read_file)

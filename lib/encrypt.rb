@@ -7,8 +7,7 @@ ARGV[1] == 'encrytped.txt'
 
 class Encryptor < FileWorker
   def initialize
-    super(ARGV[0], ARGV[1])
-    @method = :encryption
+    super(ARGV[0], ARGV[1], :encryption)
     @result = encrypted
   end
 
