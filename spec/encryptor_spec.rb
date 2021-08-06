@@ -23,6 +23,11 @@ RSpec.describe Encryptor do
   end
 
   context 'encrypting' do
+    it 'can calculate a shift' do
+      encrypt = Encryptor.new('hello world', '02715', '040895')
+      expect(encrypt.calculate_shift('a', 5)).to eq(5)
+    end
+
     it 'can get the next letter index and letter' do
       encrypt = Encryptor.new('hello world', '02715', '040895')
       expect(encrypt.next_index('b', 3)).to eq(4)

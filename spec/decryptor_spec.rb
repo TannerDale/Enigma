@@ -23,6 +23,11 @@ RSpec.describe Decryptor do
   end
 
   context 'decrypting' do
+    it 'can calculate a shift' do
+      decrypt = Decryptor.new('hello world', '02715', '040895')
+      expect(decrypt.calculate_shift(' ', 5)).to eq(21)
+    end
+
     it 'can get the next letter index and letter' do
       decrypt = Decryptor.new('hello world', '02715', '040895')
       expect(decrypt.next_index('b', 3)).to eq(25)

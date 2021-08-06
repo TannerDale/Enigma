@@ -2,7 +2,6 @@
 require './lib/offset'
 
 class Cypher
-
   attr_reader :message, :key, :date, :offsets
 
   ALPHABET = ('a'..'z').to_a << ' '
@@ -26,5 +25,9 @@ class Cypher
 
   def next_letter(letter, i)
     ALPHABET[next_index(letter, @offsets[i % 4])]
+  end
+
+  def next_index(letter, offset)
+    calculate_shift(letter, offset) % ALPHABET.size
   end
 end

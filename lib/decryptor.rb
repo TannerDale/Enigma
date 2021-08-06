@@ -5,8 +5,8 @@ class Decryptor < Cypher
     super
   end
 
-  def next_index(letter, shift)
-    (ALPHABET.index(letter) - shift) % ALPHABET.size
+  def calculate_shift(letter, shift)
+    ALPHABET.index(letter) - shift
   end
 
   def format_decryption
