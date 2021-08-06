@@ -43,7 +43,7 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
   end
 
-  it 'can work with any date' do
+  it 'can encrypt then decrypt' do
     enigma = Enigma.new
 
     message = "what's up doc?"
@@ -52,5 +52,16 @@ RSpec.describe Enigma do
     decrypted = enigma.decrypt(result[:encryption], result[:key], result[:date])
 
     expect(decrypted[:decryption]).to eq(message)
+  end
+
+  it 'can encrypt then decrypt again' do
+    enigma = Enigma.new
+
+    message = "Chicken Little has a 'funny' haircut"
+    result = enigma.encrypt(message)
+
+    decrypted = enigma.decrypt(result[:encryption], result[:key], result[:date])
+
+    expect(decrypted[:decryption]).to eq(message.downcase)
   end
 end
