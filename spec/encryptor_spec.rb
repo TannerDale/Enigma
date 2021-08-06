@@ -1,6 +1,7 @@
 require './lib/key_maker'
 require './lib/offset'
 require './lib/encryptor'
+require './lib/cypher'
 
 RSpec.describe Encryptor do
   context 'initialize' do
@@ -21,24 +22,6 @@ RSpec.describe Encryptor do
     end
   end
 
-  context 'date formatting and key generating' do
-    encrypt = Encryptor.new('Hello World', '02715', '050821')
-
-    it 'can format a date' do
-      expect(Encryptor.format_today(Time.new(2021, 8, 5))).to eq('050821')
-    end
-
-    it 'can generate a number' do
-      expect(encrypt.generate_number).to be_between(0, 99999)
-    end
-
-    it 'can make a new key' do
-      allow(encrypt).to receive(:generate_number).and_return(256)
-
-      expect(encrypt.make_key_string).to eq('00256')
-    end
-  end
-
   context 'encrypting' do
     it 'can get the next letter index and letter' do
       encrypt = Encryptor.new('hello world', '02715', '040895')
@@ -49,25 +32,25 @@ RSpec.describe Encryptor do
     it 'can encrypt basic message' do
       encrypt = Encryptor.new('hello world', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq('keder ohulw')
+      expect(encrypt.process_message).to eq('keder ohulw')
     end
 
     it 'can encrypt message with capitol letters' do
       encrypt = Encryptor.new('Hello World', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq('keder ohulw')
+      expect(encrypt.process_message).to eq('keder ohulw')
     end
 
     it 'can encrypt mesage with puntuation' do
       encrypt = Encryptor.new('Hello World!', '02715', '040895')
 
-      expect(encrypt.encrypted_message).to eq('keder ohulw!')
+      expect(encrypt.process_message).to eq('keder ohulw!')
     end
 
     it 'can encrypt a different message' do
       encrypt = Encryptor.new('hello world end', '08304', '291018')
 
-      expect(encrypt.encrypted_message).to eq('vjqtbeaweqihssi')
+      expect(encrypt.process_message).to eq('vjqtbeaweqihssi')
     end
 
     it 'can format a encrypted message' do
