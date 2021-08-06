@@ -1,4 +1,3 @@
-
 require './lib/offset'
 
 class Cypher
@@ -13,8 +12,8 @@ class Cypher
     @offsets = Offset.offsets(@key, @date)
   end
 
-  def process_message
-    @message.chars.each_with_index.map do |letter, i|
+  def process_message(message=@message)
+    message.chars.each_with_index.map do |letter, i|
       if ALPHABET.include?(letter)
         next_letter(letter, i)
       else
