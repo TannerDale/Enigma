@@ -1,4 +1,6 @@
 class FileWorker
+  attr_reader :method
+
   def initialize(read_file, write_file, method)
     @read_file = read_file
     @write_file = write_file
