@@ -9,7 +9,7 @@ class Enigma
   end
 
   def format_today(date=Time.now)
-    date.strftime('%d%m') + date.strftime('%Y')[2..]
+    date.strftime('%d%m%y')
   end
 
   def encrypt(message, key=make_key_string, date=format_today)
