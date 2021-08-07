@@ -2,7 +2,7 @@ require './lib/enigma'
 require './lib/key_maker'
 require './lib/file_worker'
 
-ARGV == ['encrytped.txt', 'decrypted.txt', 'key', 'date']
+ARGV == ['encrytped.txt', 'decrypted.txt', 'date']
 ARGV[0] == 'encrytped.txt'
 ARGV[1] == 'decrypted.txt'
 ARGV[2] == 'date'
@@ -12,7 +12,7 @@ class KeyCracker < FileWorker
 
   def initialize
     super(ARGV[0], ARGV[1], :decryption)
-    @date = ARGV[2] || nil
+    @date = ARGV[2]
     @enigma = Enigma.new
     @message = read_file(@read_file).chomp
     @result = decrypted
@@ -33,7 +33,7 @@ class KeyCracker < FileWorker
   end
 
   def correct_key?(key)
-    result = @enigma.decrypt(find, key, @date)[@method]
+    result = @enigma.decrypt(find, key, @date)[:decryption]
     result.end_with?(" end")
   end
 
