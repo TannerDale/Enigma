@@ -62,4 +62,15 @@ RSpec.describe Enigma do
 
     expect(decrypted[:decryption]).to eq(message.downcase)
   end
+
+  it 'can crack' do
+    enigma = Enigma.new
+
+    expected = {
+      decryption: "hello world end",
+      date: "291018",
+      key: "08304"
+    }
+    expect(enigma.crack("vjqtbeaweqihssi", "291018")).to eq(expected)
+  end
 end
