@@ -29,7 +29,9 @@ class RunCracking < RunDecryption
   end
 
   def correct_key?(key)
-    process_message(find).end_with?(" end")
+    result = process_message(find)
+
+    result.end_with?(" end")
   end
 
   def find

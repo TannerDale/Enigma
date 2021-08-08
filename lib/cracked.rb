@@ -2,11 +2,6 @@ require './lib/enigma'
 require './lib/key_maker'
 require './lib/file_worker'
 
-ARGV == ['encrytped.txt', 'decrypted.txt', 'date']
-ARGV[0] == 'encrytped.txt'
-ARGV[1] == 'decrypted.txt'
-ARGV[2] == 'date'
-
 class KeyCracker < FileWorker
   include KeyMaker
 
