@@ -35,12 +35,12 @@ class RunCracking < RunDecryption
   end
 
   def find
-    start = -(4 - start_offset)
+    start = -4 - start_offset
     @message[start..-1]
   end
 
   def start_offset
-    @message.size % (@message.size - 4)
+    (@message.size - 4) % 4
   end
 
   def self.crack(message, date)

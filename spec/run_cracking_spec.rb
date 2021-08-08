@@ -18,11 +18,11 @@ RSpec.describe RunCracking do
     crack = RunCracking.new('vjqtbeaweqihssi', '291018')
 
     it 'can find where to start' do
-      expect(crack.start_offset).to eq(4)
+      expect(crack.start_offset).to eq(3)
     end
 
     it 'can find the beginning of a message' do
-      expect(crack.find).to eq('vjqtbeaweqihssi')
+      expect(crack.find).to eq('eqihssi')
     end
 
 
