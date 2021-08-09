@@ -18,8 +18,12 @@ class FileWorker
   end
 
   def output
-    write_to_file(@write_file, @result[@method])
-    formatted_output
+    begin
+      write_to_file(@write_file, @result[@method])
+      formatted_output
+    rescue
+      "Cracking Failed"
+    end
   end
 
   def formatted_output
