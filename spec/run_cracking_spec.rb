@@ -54,4 +54,12 @@ RSpec.describe RunCracking do
       expect(crack.decrypted).to eq(expected)
     end
   end
+
+  context 'edge case' do
+    crack = RunCracking.new('vjqtbeaweqih', '291018')
+
+    it 'can process a failed crack' do
+      expect(crack.decrypted).to eq("Cracking Failed")
+    end
+  end
 end
