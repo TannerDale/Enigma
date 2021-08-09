@@ -25,7 +25,16 @@ class RunCracking < RunDecryption
 
   def decrypted
     make_key
-    format_decryption
+    validate_decryption(format_decryption)
+  end
+
+  def validate_decryption(decryption)
+    if decryption[:decryption].end_with?(' end')
+      decryption
+    else
+      warn "Cracking Failed: Ensure original message ends with ' end'."
+      "Cracking Failed"
+    end
   end
 
   def correct_key?(key)
