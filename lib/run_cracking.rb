@@ -14,7 +14,7 @@ class RunCracking < RunDecryption
 
   def make_key
     current_key = 0
-    while current_key < 99999
+    while current_key < 100000
       @key = make_key_string(current_key)
       @offsets = Offset.offsets(@key, @date)
       break if correct_key?(key)
